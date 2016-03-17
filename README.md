@@ -1,0 +1,2 @@
+# SerializableDictionary
+SerializableCollections(SerializableDictionary, SerializableLookup, SerializableTuple) for Unity
