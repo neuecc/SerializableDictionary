@@ -92,15 +92,7 @@ TrimExcess
 ---
 `TrimExcess` of `SerializableDictionary`, `SerializableLookup` cut the buffer and reduce memory usage. 
 
-
-
-
-
-
-
-
-
-
-
-
-
+License
+---
+under the MIT Licesne.
+Dictionary's original code is from [dotnet/corefx](https://github.com/dotnet/corefx), check the original license.
