@@ -17,8 +17,7 @@ namespace SerializableCollections
         {
             var height = base.GetPropertyHeight(property, label);
 
-            var target = property.serializedObject.targetObject;
-            var dictionary = fieldInfo.GetValue(target) as IDictionary;
+            var dictionary = fieldInfo.GetValue(SerializeableCollectionsPropertyHelper.GetParent(property)) as IDictionary;
             if (dictionary == null) return height;
 
             return (foldout)
@@ -28,8 +27,7 @@ namespace SerializableCollections
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            var target = property.serializedObject.targetObject;
-            var dictionary = fieldInfo.GetValue(target) as IDictionary;
+            var dictionary = fieldInfo.GetValue(SerializeableCollectionsPropertyHelper.GetParent(property)) as IDictionary;
             if (dictionary == null) return;
 
             foldout = EditorGUI.Foldout(position, foldout, label, true);
