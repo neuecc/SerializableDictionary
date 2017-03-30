@@ -18,8 +18,7 @@ namespace SerializableCollections
         {
             var height = base.GetPropertyHeight(property, label);
 
-            var target = property.serializedObject.targetObject;
-            var lookup = fieldInfo.GetValue(target) as IEnumerable; // ILookup
+            var lookup = fieldInfo.GetValue(SerializeableCollectionsPropertyHelper.GetParent(property)) as IEnumerable; // ILookup
             if (lookup == null) return height;
 
             var count = (int)lookup.GetType().GetProperty("Count", reflectionFlags).GetValue(lookup, null);
@@ -30,8 +29,7 @@ namespace SerializableCollections
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            var target = property.serializedObject.targetObject;
-            var lookup = fieldInfo.GetValue(target) as IEnumerable; // ILookup
+            var lookup = fieldInfo.GetValue(SerializeableCollectionsPropertyHelper.GetParent(property)) as IEnumerable; // ILookup
             if (lookup == null) return;
 
             var count = lookup.GetType().GetProperty("Count", reflectionFlags).GetValue(lookup, null);
